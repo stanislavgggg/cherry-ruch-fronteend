@@ -135,6 +135,23 @@ function StreamPage() {
     };
   }, [membershipQ]);
 
+  // Reset surface-trigger state on tab switch
+  useEffect(() => {
+    setLiveStickyArmed(false);
+    setFeedLockSeen(false);
+    if (tab !== "live") return;
+    // Arm Live sticky after 6s dwell or >300px scroll
+    const timer = setTimeout(() => setLiveStickyArmed(true), 6000);
+    const onScroll = () => {
+      if (window.scrollY > 300) setLiveStickyArmed(true);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("scroll", onScroll);
+    };
+  }, [tab]);
+
   // Burst when membership flips false → true
   useEffect(() => {
     if (prevMemberRef.current === false && isMember === true) {
