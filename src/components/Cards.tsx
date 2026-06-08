@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { NewsItem, BackendMatch } from "@/lib/funnel";
 import { trackEvent } from "@/lib/funnel";
 import type { Lang } from "@/lib/i18n";
