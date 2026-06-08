@@ -25,9 +25,7 @@ export function SubscribeBar({ onSubscribe, lang }: { onSubscribe: () => void; l
           }}
           className="cr-cta flex w-full items-center justify-center gap-2 rounded-2xl px-4 py-3.5 text-sm font-extrabold tracking-tight sm:text-base"
         >
-          <span className="hidden xs:inline">🍒</span>
-          <span className="whitespace-nowrap truncate">{t(lang, "subscribe")}</span>
-          <span>🍒</span>
+          <span className="whitespace-nowrap truncate">🍒 {t(lang, "subscribe")} 🍒</span>
         </button>
         <p className="mt-1.5 text-center text-[10px] text-rose/80">{t(lang, "disclaimer")}</p>
       </div>
