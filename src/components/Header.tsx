@@ -4,6 +4,7 @@ import ruby from "@/assets/ruby.png";
 import { LangSwitcher } from "./LangSwitcher";
 import type { Lang } from "@/lib/i18n";
 import { t } from "@/lib/i18n";
+import { toStr } from "@/lib/funnel";
 
 export function Header({
   displayName,
