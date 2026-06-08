@@ -68,7 +68,7 @@ function StreamPage() {
     queryKey: ["live"],
     queryFn: getLive,
     refetchInterval: 60_000,
-    enabled: tab === "hot" || tab === "live",
+    enabled: tab === "hot" || tab === "live" || tab === "channel",
   });
   const upcomingQ = useQuery({
     queryKey: ["upcoming"],
