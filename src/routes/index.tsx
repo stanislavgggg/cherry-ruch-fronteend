@@ -42,6 +42,8 @@ function StreamPage() {
   const [sub, setSub] = useState<NewsSub>("all");
   const [interstitialOpen, setInterstitialOpen] = useState(false);
   const [showBurst, setShowBurst] = useState(false);
+  const [feedLockSeen, setFeedLockSeen] = useState(false);
+  const [liveStickyArmed, setLiveStickyArmed] = useState(false);
   const opensRef = useRef(0);
   const interstitialCooldownUntil = useRef(0);
   const prevMemberRef = useRef<boolean>(false);
