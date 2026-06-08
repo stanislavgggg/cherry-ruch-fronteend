@@ -208,6 +208,16 @@ function StreamPage() {
       }
       return <MarketsPanel market={market} lang={lang} />;
     }
+    if (tab === "channel") {
+      return (
+        <ChannelPreview
+          lang={lang}
+          displayName={cfg?.display_name || "Cherry Rush"}
+          onSubscribe={onSubscribe}
+          pinned={newsItems.slice(0, 3)}
+        />
+      );
+    }
     if (tab === "live") {
       const live = liveQ.data?.matches ?? [];
       const upcoming = upcomingQ.data?.matches ?? [];
@@ -219,10 +229,16 @@ function StreamPage() {
           </MascotEmpty>
         );
       }
+      const all = [...live, ...upcoming];
+      const [pinned, ...rest] = all;
       return (
         <div className="space-y-2.5 px-1">
-          {live.map((m, i) => <LiveCard key={"l" + i} match={m} lang={lang} onSubscribe={onSubscribe} gated={gated} />)}
-          {upcoming.map((m, i) => <LiveCard key={"u" + i} match={m} lang={lang} onSubscribe={onSubscribe} gated={gated} />)}
+          {pinned && gated && (
+            <LivePinnedCard match={pinned} lang={lang} onSubscribe={onSubscribe} />
+          )}
+          {(pinned && !gated ? all : rest).map((m, i) => (
+            <LiveCard key={"l" + i} match={m} lang={lang} />
+          ))}
         </div>
       );
     }
