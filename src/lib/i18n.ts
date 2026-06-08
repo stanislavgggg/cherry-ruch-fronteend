@@ -101,6 +101,7 @@ const DICT = {
     onboardBody: "Feed rápido de noticias, marcadores en vivo y mercados. Únete al canal para los drops.",
     onboardCta: "Únete al canal",
     now: "ahora",
+    retry: "Reintentar",
   },
 } as const;
 
